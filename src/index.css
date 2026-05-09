@@ -1,0 +1,619 @@
+/* =========================================================
+   Sale Motivation Daily — Design tokens
+========================================================= */
+:root {
+  --c-primary: #FF8C42;
+  --c-primary-dark: #E07330;
+  --c-secondary: #7B5EA7;
+  --c-accent: #FFD66B;
+  --c-bg: #FFF8F0;
+  --c-text: #2D1B4E;
+  --c-text-soft: #6B5E80;
+  --c-success: #4CAF50;
+  --c-danger: #E55934;
+  --shadow-sm: 0 2px 8px rgba(45, 27, 78, 0.08);
+  --shadow-md: 0 8px 24px rgba(45, 27, 78, 0.12);
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(160deg, #FFF8F0 0%, #FFE9D6 35%, #F4E6FF 100%);
+  background-attachment: fixed;
+  color: var(--c-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+
+/* =========================================================
+   Buttons
+========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 18px;
+  border-radius: var(--r-md);
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: 500;
+  transition: transform 0.12s ease, box-shadow 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn.primary {
+  background: var(--c-primary);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+.btn.primary:hover { background: var(--c-primary-dark); box-shadow: var(--shadow-md); }
+
+.btn.ghost {
+  background: white;
+  border-color: rgba(123, 94, 167, 0.25);
+  color: var(--c-text);
+}
+.btn.ghost:hover { border-color: var(--c-secondary); }
+
+.btn.ghost.danger { color: var(--c-danger); border-color: rgba(229, 89, 52, 0.3); }
+
+.big-cta {
+  display: flex;
+  margin: 24px auto 0;
+  width: 100%;
+  max-width: 360px;
+  font-size: 17px;
+  padding: 16px;
+}
+
+/* =========================================================
+   App shell
+========================================================= */
+.app-shell {
+  min-height: 100vh;
+  max-width: 540px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 12px;
+}
+
+.greeting {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+  color: var(--c-text);
+}
+.streak {
+  font-size: 12px;
+  color: var(--c-secondary);
+  margin: 2px 0 0;
+}
+
+.user-block {
+  position: relative;
+  cursor: pointer;
+}
+.user-block img,
+.avatar-fallback {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: var(--shadow-sm);
+  object-fit: cover;
+  background: var(--c-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: var(--c-text);
+}
+.user-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-md);
+  padding: 12px 14px;
+  min-width: 200px;
+  z-index: 10;
+}
+.menu-name { font-weight: 500; font-size: 14px; }
+.menu-email { font-size: 12px; color: var(--c-text-soft); margin-bottom: 8px; }
+.logout-btn {
+  background: none;
+  border: 1px solid rgba(229, 89, 52, 0.3);
+  color: var(--c-danger);
+  border-radius: var(--r-sm);
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 13px;
+}
+
+.app-main {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.page { animation: fadeIn 0.3s ease; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   Login page
+========================================================= */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card {
+  background: white;
+  border-radius: var(--r-lg);
+  padding: 32px 24px;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+.logo {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+.login-card h1 {
+  font-size: 22px;
+  margin: 4px 0;
+  color: var(--c-text);
+}
+.tagline {
+  color: var(--c-secondary);
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+.login-features {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin: 16px 0 24px;
+  font-size: 14px;
+  color: var(--c-text-soft);
+}
+.login-features li { padding: 6px 0; }
+
+.google-login-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.disclaimer {
+  font-size: 11px;
+  color: var(--c-text-soft);
+  margin: 0;
+}
+
+/* =========================================================
+   Daily Quote
+========================================================= */
+.daily-quote { padding: 8px 0; }
+
+.quote-card {
+  background: white;
+  border-radius: var(--r-lg);
+  padding: 28px 22px 22px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  border: 1px solid rgba(255, 214, 107, 0.5);
+}
+.quote-mark {
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  font-size: 64px;
+  color: var(--c-primary);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+.quote-text {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--c-text);
+  margin: 0 0 12px;
+  font-style: italic;
+}
+.quote-author {
+  font-size: 13px;
+  color: var(--c-secondary);
+  text-align: right;
+  margin: 0;
+}
+
+.quote-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.quote-actions .btn { flex: 1; padding: 10px; font-size: 13px; }
+
+.footnote {
+  text-align: center;
+  font-size: 11px;
+  color: var(--c-text-soft);
+  margin-top: 28px;
+}
+
+/* =========================================================
+   Tarot reading
+========================================================= */
+.tarot-reading { padding: 12px 0; }
+
+.prompt {
+  text-align: center;
+  font-size: 15px;
+  color: var(--c-text);
+  margin: 8px 0 18px;
+}
+
+.shuffle-area, .choose-area, .revealed-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shuffle-cards {
+  position: relative;
+  width: 120px;
+  height: 180px;
+  margin: 18px 0;
+}
+.shuffle-card {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #7B5EA7, #4A3577);
+  border-radius: var(--r-md);
+  border: 2px solid var(--c-accent);
+  animation: shuffle 1s ease-in-out infinite;
+}
+.shuffle-card.s-0 { animation-delay: 0s; }
+.shuffle-card.s-1 { animation-delay: 0.15s; }
+.shuffle-card.s-2 { animation-delay: 0.3s; }
+
+@keyframes shuffle {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  50% { transform: translateX(-20px) rotate(-8deg); }
+}
+
+.three-cards {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin: 16px 0 24px;
+}
+
+/* TarotCard component */
+.tarot-card {
+  perspective: 1000px;
+  cursor: pointer;
+}
+.tarot-card.size-md { width: 110px; height: 170px; }
+.tarot-card.size-lg { width: 130px; height: 200px; }
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tarot-card.flipped .card-inner { transform: rotateY(180deg); }
+
+.tarot-card .card-back,
+.tarot-card .card-front {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-md);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+}
+
+.card-back {
+  background: linear-gradient(135deg, #7B5EA7, #4A3577);
+  border: 2px solid var(--c-accent);
+  color: var(--c-accent);
+}
+.back-pattern {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 22px;
+}
+
+.card-front {
+  transform: rotateY(180deg);
+  background: white;
+  border: 2px solid var(--accent, var(--c-primary));
+  padding: 12px;
+  text-align: center;
+  color: var(--c-text);
+}
+.card-front .card-icon { font-size: 42px; margin-bottom: 8px; }
+.card-front .card-name { font-weight: 500; font-size: 15px; }
+.card-front .card-name-en { font-size: 11px; color: var(--c-text-soft); margin-top: 4px; }
+
+.tarot-card:not(.flipped):hover {
+  transform: translateY(-4px);
+  transition: transform 0.2s ease;
+}
+
+.choose-area .tarot-card:nth-child(1) { transform: rotate(-6deg); }
+.choose-area .tarot-card:nth-child(3) { transform: rotate(6deg); }
+.choose-area .tarot-card:hover { transform: translateY(-6px) rotate(0); }
+
+.revealed-prompt { color: var(--c-secondary); font-weight: 500; }
+
+.card-meaning-title {
+  font-size: 22px;
+  margin: 18px 0 10px;
+  color: var(--c-text);
+}
+.card-meaning {
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 420px;
+  margin: 0 0 12px;
+  color: var(--c-text);
+}
+.card-advice {
+  background: rgba(255, 214, 107, 0.35);
+  padding: 10px 14px;
+  border-radius: var(--r-md);
+  border-left: 3px solid var(--c-primary);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--c-text);
+  margin: 0 0 18px;
+  max-width: 420px;
+}
+
+.extra-card {
+  background: white;
+  border-radius: var(--r-md);
+  padding: 14px;
+  border: 1px dashed var(--c-secondary);
+  margin: 8px 0 14px;
+  width: 100%;
+  max-width: 420px;
+}
+.extra-label {
+  font-size: 12px;
+  color: var(--c-secondary);
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.extra-content {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.extra-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.extra-name { font-weight: 500; margin: 0 0 4px; }
+.extra-meaning { font-size: 13px; margin: 0 0 4px; line-height: 1.5; color: var(--c-text-soft); }
+.extra-advice { font-size: 13px; color: var(--c-primary); font-weight: 500; margin: 0; }
+
+.reveal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* =========================================================
+   History page
+========================================================= */
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0 20px;
+}
+.history-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.history-day {
+  margin-bottom: 22px;
+}
+.day-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.day-date {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--c-secondary);
+  background: white;
+  padding: 4px 10px;
+  border-radius: 100px;
+  box-shadow: var(--shadow-sm);
+}
+
+.history-card {
+  background: white;
+  border-radius: var(--r-md);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.history-card.main { border-left: 4px solid var(--c-primary); }
+
+.hc-icon { font-size: 32px; flex-shrink: 0; }
+.hc-body p { margin: 0 0 4px; }
+.hc-title { font-weight: 500; font-size: 15px; }
+.hc-meaning { font-size: 13px; color: var(--c-text-soft); line-height: 1.5; }
+.hc-advice { font-size: 13px; color: var(--c-primary); font-weight: 500; }
+
+.extras-list { margin-top: 8px; }
+.extras-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--c-text-soft);
+  margin: 8px 4px 4px;
+  letter-spacing: 0.5px;
+}
+.history-card.extra {
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  align-items: center;
+}
+.hc-icon-sm { font-size: 20px; }
+.hc-name-sm { font-size: 13px; }
+
+.history-page.empty {
+  text-align: center;
+  padding-top: 60px;
+}
+.empty-illustration { font-size: 72px; margin-bottom: 16px; }
+
+/* =========================================================
+   Bottom Nav
+========================================================= */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 540px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+  box-shadow: 0 -2px 12px rgba(45, 27, 78, 0.08);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  z-index: 100;
+}
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 11px;
+  color: var(--c-text-soft);
+  border-radius: var(--r-sm);
+  transition: color 0.2s;
+}
+.nav-item.active { color: var(--c-primary); font-weight: 500; }
+.nav-icon { font-size: 22px; margin-bottom: 2px; }
+
+/* =========================================================
+   Toast
+========================================================= */
+.toast {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--c-text);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-size: 13px;
+  z-index: 1000;
+  animation: toastIn 0.3s ease;
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* =========================================================
+   Misc
+========================================================= */
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: var(--c-text-soft);
+}
+
+.config-error {
+  max-width: 480px;
+  margin: 80px auto;
+  padding: 24px;
+  background: white;
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-md);
+}
+.config-error h2 { color: var(--c-danger); }
+.config-error pre {
+  background: #f4f1ec;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  overflow-x: auto;
+}
+
+/* small screen tweaks */
+@media (max-width: 380px) {
+  .three-cards { gap: 8px; }
+  .tarot-card.size-lg { width: 100px; height: 158px; }
+}
